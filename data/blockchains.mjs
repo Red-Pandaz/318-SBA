@@ -12,13 +12,11 @@ export const blockchains = [
     {
         "id": 3,
         "name": "Binance Chain",
-        "ticker": "BNB",
         "currencies": [3]
     },
     {
         "id": 4,
         "name": "Solana",
-        "ticker": "SOL",
         "currencies": [5]
     },
     {

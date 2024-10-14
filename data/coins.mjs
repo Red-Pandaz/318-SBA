@@ -119,4 +119,5 @@ export const coins = [
         "ticker": "UNI",
         "blockchain": 2
     }
-]
+];
+
