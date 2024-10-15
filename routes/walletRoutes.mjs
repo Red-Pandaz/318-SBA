@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
     res.status(200).json(wallets);
 });
 
-router.get('/wallets/:walletId', (req, res) => {
+router.get('/:walletId', (req, res) => {
     const { walletId } = req.params;
     const wallet = wallets.find(w => w.id === walletId);
 
@@ -26,7 +26,7 @@ router.get('/wallets/:walletId', (req, res) => {
     res.status(200).json(wallet);
 });
 
-router.post('/wallets', (req, res) => {
+router.post('/', (req, res) => {
     const { id, address, chainId, subcurrencies } = req.body;
 
     if (!id || !address || !chainId || !subcurrencies) {
@@ -46,7 +46,7 @@ router.post('/wallets', (req, res) => {
 });
 
 // UPDATE: Update a wallet's subcurrencies (add/update balances)
-router.put('/wallets/:id', (req, res) => {
+router.put('/:id', (req, res) => {
     const { id } = req.params;
     const { subcurrencies } = req.body;
 
@@ -69,7 +69,7 @@ router.put('/wallets/:id', (req, res) => {
 
 
 // DELETE: Delete a wallet by od
-router.delete('/wallets/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
     const { id } = req.params;
 
     const walletIndex = wallets.findIndex(w => w.id === id);

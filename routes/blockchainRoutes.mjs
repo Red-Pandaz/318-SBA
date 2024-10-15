@@ -3,7 +3,7 @@ import { blockchains } from '../data/blockchains.mjs';
 
 const router = express.Router();
 
-router.get('/blockchains', (req, res) => {
+router.get('/', (req, res) => {
     res.status(200).json(blockchains);
 });
 

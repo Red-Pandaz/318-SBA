@@ -3,7 +3,7 @@ import { coins } from '../data/coins.mjs';
 
 const router = express.Router();
 
-router.get('/coins', (req, res) => {
+router.get('/', (req, res) => {
     res.status(200).json(coins);
 });
 
