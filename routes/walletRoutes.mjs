@@ -12,7 +12,19 @@ function saveWallets() {
 
 router.get('/', (req, res) => {
     console.log(wallets)
-    res.status(200).json(wallets);
+    // res.status(200).json(wallets);
+    let options = {
+        allWallets: wallets,
+      };
+      res.render('showWallets', options);
+});
+router.get('/new/', (req, res) => {
+    console.log(wallets)
+    // res.status(200).json(wallets);
+    let options = {
+        allWallets: wallets,
+      };
+      res.render('newWallet', options);
 });
 
 router.get('/:walletId', (req, res) => {
@@ -27,18 +39,18 @@ router.get('/:walletId', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    const { id, address, chainId, subcurrencies } = req.body;
+    let { id, address, chainId, subcurrencies } = req.body;
 
     if (!id || !address || !chainId || !subcurrencies) {
         return res.status(400).json({ message: "id, address, chainId and subcurrencies are required" });
     }
 
-    const walletExists = wallets.some(w => w.id === id);
+    let walletExists = wallets.some(w => w.id === id);
     if (walletExists) {
         return res.status(400).json({ message: "Wallet already exists" });
     }
 
-    const newWallet = { id, address, subcurrencies };
+    let newWallet = { id, address, subcurrencies };
     wallets.push(newWallet);
 
     saveWallets();  // Save the updated array

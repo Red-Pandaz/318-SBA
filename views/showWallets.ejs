@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wallets</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+  <nav>
+    <a href='/api/wallets/new'>Create A New Wallet</a>
+    </nav>
+    <div id="app">
+
+    <h1>Create A New Wallet</h1>
+
+<h2>All Wallets</h2>
+<ul>
+    <% allWallets.forEach(function(wallet) { %>
+      <h4>Wallet Address: <%= wallet.address %></h4>
+      <li>Blockhain: <%= wallet.blockchain %></li>
+      <!-- <li>Assset <%= wallet.address %></li> -->
+    <% }) %>
+</ul>
+    </div>
+  </body>
+</html>

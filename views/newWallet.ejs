@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wallets</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+  <nav>
+    <a href='/api/wallets/'>Show Wallets</a>
+    </nav>
+    <div id="app">
+
+    <h1>Create A New Wallet</h1>
+
+      <form action="/api/wallets" method="post"><br>
+      <input type='text' name='address' placeholder='Address' /><br>
+      <input type='text' id="blockchainSelect" name='blockchain' placeholder='Blockchain'  /><br>
+      <input type='text' id="assetSelect" name='asset' placeholder='Asset'   /><br>
+      <input type='number' name='balance' placeholder='Balance'  /><br>
+      <input type='submit' />
+      </form>
+    </div>
+  </body>
+</html>
