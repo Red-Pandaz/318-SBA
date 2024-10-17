@@ -4,11 +4,13 @@ import walletRoutes from './routes/walletRoutes.mjs';
 import blockchainRoutes from './routes/blockchainRoutes.mjs';
 import coinRoutes from './routes/coinRoutes.mjs';
 import { wallets } from './data/wallets.mjs'
+import { coins } from './data/coins.mjs'
+import { blockchains } from './data/blockchains.mjs'
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ejs from 'ejs';  // Import EJS if needed
-
 // Simulate __dirname in ES modules
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -30,8 +32,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Serve static files
-app.use(express.static('public'));
 
 // Set the views directory and view engine
 app.set('views', path.join(__dirname, 'views'));
@@ -43,7 +43,10 @@ app.use('/api/blockchains', blockchainRoutes);
 app.use('/api/coins', coinRoutes);
 
 app.get('/api/wallets', (req, res) => {
-  res.render('showWallets', { allWallets: wallets });
+  res.render('showWallets', { 
+    allWallets: wallets, 
+    allCoins: coins, 
+    allChains: blockchains });
 });
 
 // Error handling

@@ -7,21 +7,29 @@
   </head>
 
   <body>
-  <nav>
-    <a href='/api/wallets/new'>Create A New Wallet</a>
+    <nav>
+      <a href='/api/wallets/new'>Create A New Wallet</a>
     </nav>
     <div id="app">
+      <h2>All Wallets</h2>
+      <ul>
+        <% allWallets.forEach(function(wallet) {  console.log(wallet)%>
+          
+          <h4>Wallet Address: <%= wallet.address %></h4>
+          <li>Blockchain: <%= wallet.blockchain %></li>
+          <li>Currencies:
+            <ul>
+              <li>Name   Quantity</li>  
+              <% wallet.subcurrencies.forEach(function(currency) {  console.log(currency)%>
+                <li><%= currency.id %> <%= currency.quantity %></li>
 
-    <h1>Create A New Wallet</h1>
-
-<h2>All Wallets</h2>
-<ul>
-    <% allWallets.forEach(function(wallet) { %>
-      <h4>Wallet Address: <%= wallet.address %></h4>
-      <li>Blockhain: <%= wallet.blockchain %></li>
-      <!-- <li>Assset <%= wallet.address %></li> -->
-    <% }) %>
-</ul>
+            
+              <% }) %>
+            </ul>
+          </li>
+          <!-- <li>Asset <%= wallet.address %></li> -->
+        <% }) %>
+      </ul>
     </div>
   </body>
 </html>

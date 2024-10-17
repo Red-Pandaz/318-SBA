@@ -2,7 +2,7 @@ export const wallets = [
     {
         "id": 1,
         "address": 'slkdfjdkslfj',
-        "blockchain": 2,
-        "subcurrencies": [18, 19, 20]
+        "blockchain": 'Ethereum',
+        "subcurrencies": [{"id": 'ETH', "quantity": 100}, {"id": 'LINK', "quantity": 100}, {"id": 'USDC', "quantity": 1000}]
     }
 ]
