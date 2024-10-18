@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 
 // Set the views directory and view engine
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');  // Use 'ejs' as the view engine
+app.set('view engine', 'ejs'); 
 
 // Routes
 app.use('/api/wallets', walletRoutes);
@@ -44,6 +44,12 @@ app.use('/api/coins', coinRoutes);
 
 app.get('/api/wallets', (req, res) => {
   res.render('showWallets', { 
+    allWallets: wallets, 
+    allCoins: coins, 
+    allChains: blockchains });
+});
+app.get('/api/wallets/new', (req, res) => {
+  res.render('newWallet', { 
     allWallets: wallets, 
     allCoins: coins, 
     allChains: blockchains });

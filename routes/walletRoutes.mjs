@@ -7,7 +7,7 @@ const router = express.Router();
 
 function saveWallets() {
     const fileContent = `export let wallets = ${JSON.stringify(wallets, null, 2)};`;
-    fs.writeFileSync('../data/wallets.mjs', fileContent);
+    fs.writeFileSync('./data/wallets.mjs', fileContent);
 }
 
 router.get('/', (req, res) => {
@@ -39,23 +39,31 @@ router.get('/:walletId', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    let { id, address, chainId, subcurrencies } = req.body;
+    const { address, blockchain, asset, balance } = req.body;
 
-    if (!id || !address || !chainId || !subcurrencies) {
-        return res.status(400).json({ message: "id, address, chainId and subcurrencies are required" });
+    if (!address || !blockchain || !asset || balance == null) {
+        return res.status(400).json({ message: "Address, blockchain, asset, and balance are required" });
     }
 
-    let walletExists = wallets.some(w => w.id === id);
+    let walletExists = wallets.some(w => w.address === address);
     if (walletExists) {
         return res.status(400).json({ message: "Wallet already exists" });
     }
 
-    let newWallet = { id, address, subcurrencies };
+    let newWallet = { 
+        id: wallets.length + 1,
+        address, 
+        blockchain, 
+        asset, 
+        balance: parseFloat(balance) 
+    };
+
     wallets.push(newWallet);
 
-    saveWallets();  // Save the updated array
-    res.status(201).json(newWallet);
+    saveWallets();  
+    res.status(201).json(newWallet); 
 });
+
 
 // UPDATE: Update a wallet's subcurrencies (add/update balances)
 router.put('/:id', (req, res) => {
