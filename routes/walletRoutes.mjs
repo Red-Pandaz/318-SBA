@@ -29,13 +29,15 @@ router.get('/new/', (req, res) => {
 
 router.get('/:walletId', (req, res) => {
     const { walletId } = req.params;
-    const wallet = wallets.find(w => w.id === walletId);
+    console.log('wallets: ', wallets)
+    console.log(walletId)
+    const wallet = wallets.find(w => w.id === parseInt(walletId));
 
     if (!wallet) {
         return res.status(404).json({ message: "Wallet not found" });
     }
 
-    res.status(200).json(wallet);
+    res.render('showWallet', {oneWallet: wallet})
 });
 
 router.post('/', (req, res) => {

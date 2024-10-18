@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wallets</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <a href="./api/wallets/">View All Wallets</a>
+      <a href='/api/wallets/new'>Create A New Wallet</a>
+    </nav>
+    <div id="app">
+      <h2>Wallet <%= oneWallet.id %></h2>
+      <ul>         
+        <h4>Wallet Address: <%= oneWallet.address %></h4>
+        <li>Blockchain: <%= oneWallet.blockchain %></li>
+        <li>Currencies:
+            <ul> 
+                <% oneWallet.subcurrencies.forEach(function(currency) {  console.log(currency)%>
+                 <li><%= currency.id %> <%= currency.quantity %></li>
+                 <% }) %>
+            </ul>
+        </li>
+             
+      </ul>
+    </div>
+  </body>
+</html>

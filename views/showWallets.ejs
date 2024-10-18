@@ -18,8 +18,7 @@
           <h4>Wallet Address: <%= wallet.address %></h4>
           <li>Blockchain: <%= wallet.blockchain %></li>
           <li>Currencies:
-            <ul>
-              <li>Name   Quantity</li>  
+            <ul> 
               <% wallet.subcurrencies.forEach(function(currency) {  console.log(currency)%>
                 <li><%= currency.id %> <%= currency.quantity %></li>
 
