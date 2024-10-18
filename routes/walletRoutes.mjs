@@ -53,9 +53,11 @@ router.post('/', (req, res) => {
     let newWallet = { 
         id: wallets.length + 1,
         address, 
-        blockchain, 
-        asset, 
-        balance: parseFloat(balance) 
+        blockchain,
+        subcurrencies: [{
+            id: asset,
+            quantity: parseFloat(balance) 
+        }]
     };
 
     wallets.push(newWallet);

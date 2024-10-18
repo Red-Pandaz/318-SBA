@@ -20,9 +20,13 @@ export let wallets = [
   },
   {
     "id": 2,
-    "address": "234",
-    "blockchain": "324",
-    "asset": "324",
-    "balance": 234
+    "address": "123",
+    "blockchain": "123",
+    "subcurrencies": [
+      {
+        "id": "213",
+        "quantity": 123
+      }
+    ]
   }
 ];
